@@ -5,37 +5,37 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-		<form action="add_patient" method="post">
-			<table>
 
-				<tr>
-					<th><label for="aa">name</label></th>
-					<th><input type="text" name="name" id="aa"></th>
-				</tr>
-				<tr>
-					<th><label for="bb">mobile</label></th>
-					<th><input type="number" pattern="{0-9}[10]" name="mobile"id="bb"></th>
-				</tr>
-				<tr>
-					<th><label for="cc">DateOfBirth</label></th>
-					<th><input type="date" name="dob" id="cc"></th>
-				</tr>
-				<tr>
-					<th><label for="dd">picture</label></th>
-					<th><input type="file" name="picture" id="dd"></th>
-				</tr>
-				<br>
-				<br>
-				
-				
-			</table>
+	<form action="add_patient" method="post" enctype="multipart/form-data">
+		<table>
+
+			<tr>
+				<th><label for="aa">name</label></th>
+				<th><input type="text" name="name" id="aa"></th>
+			</tr>
+			<tr>
+				<th><label for="bb">mobile</label></th>
+				<th><input type="number" pattern="{0-9}[10]" name="mobile"
+					id="bb"></th>
+			</tr>
+			<tr>
+				<th><label for="cc">DateOfBirth</label></th>
+				<th><input type="date" name="dob" id="cc"></th>
+			</tr>
+			<tr>
+				<th><label for="dd">picture</label></th>
+				<th><input type="file" name="picture" id="dd"></th>
+			</tr>
 			<br>
-				
-				<tr>
-				<button type="submit">add</button>
-				<button type="reset">cancel</button>
-				</tr>
-		</form>
+			<br>
+
+		</table>
+		<br>
+
+		<tr>
+			<button type="submit">add</button>
+			<button type="reset">cancel</button>
+		</tr>
+	</form>
 </body>
 </html>

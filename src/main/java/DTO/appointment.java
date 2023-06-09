@@ -2,13 +2,13 @@ package DTO;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.ManyToAny;
-
+@Entity
 public class appointment {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -17,8 +17,7 @@ public class appointment {
 	LocalDateTime time;
 	
 	
-	@ManyToOne
-	patient patient;
+
 	
 	@ManyToOne
 	doctor doctor;

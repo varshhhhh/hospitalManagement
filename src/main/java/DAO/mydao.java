@@ -7,7 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import CONTROLER.DoctorSignup;
 import DTO.doctor;
 import DTO.patient;
 import DTO.staff;
@@ -29,8 +28,16 @@ public class mydao {
 		entityTransaction.commit();
 	}
 
+	public void savePatient(patient patient) {
+		entityTransaction.begin();
+		entityManager.persist(patient);
+		entityTransaction.commit();
+
+	}
+
 	public staff fetchByFindMobile(Long mobile) {
-		List<staff> list = entityManager.createQuery("select x from staff x where mobile=?1").setParameter(1, mobile).getResultList();
+		List<staff> list = entityManager.createQuery("select x from staff x where mobile=?1").setParameter(1, mobile)
+				.getResultList();
 		{
 			if (list.isEmpty()) {
 
@@ -76,7 +83,7 @@ public class mydao {
 	}
 
 	public staff fethByStaffId(int id) {
-		return entityManager.find(staff.class , id);
+		return entityManager.find(staff.class, id);
 
 	}
 
@@ -84,6 +91,7 @@ public class mydao {
 		return entityManager.find(doctor.class, id);
 	}
 
+	
 	public void updateStaff(staff staff) {
 		entityTransaction.begin();
 		entityManager.merge(staff);
@@ -95,6 +103,15 @@ public class mydao {
 		entityManager.merge(doc);
 		entityTransaction.commit();
 	}
+	
+	public void UpdatePatient(patient patient) {
+		entityTransaction.begin();
+		entityManager.merge(patient);
+		entityTransaction.commit();
+
+	}
+	
+//	--------------------------------------------------------------
 
 	public List<doctor> fetchAllDoctor() {
 		return entityManager.createQuery("select x from doctor x").getResultList();
@@ -105,10 +122,23 @@ public class mydao {
 		return entityManager.createQuery("select x from staff x").getResultList();
 
 	}
-	public void fetchPatient(patient patient) {
-		entityTransaction.begin();
-		entityManager.persist(patient);
-		entityTransaction.commit();
+	public List<patient> FetchAllPatient() {
+		return entityManager.createQuery("select x from patient x").getResultList();
+		
+	}
+
+	
+
+	public patient fetchPatientByMobile(Long mobile) {
+		List<patient> list = entityManager.createQuery("select x from patient x where mobile=?1").setParameter(1, mobile).getResultList();
+		{
+			if (list.isEmpty()) {
+
+				return null;
+			} else {
+				return list.get(0);
+			}
+		}
 	}
 
 }
